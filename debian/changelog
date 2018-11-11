@@ -1,0 +1,860 @@
+buildah (1.8-1~dev~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * autobuilt 29f306c
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 08 Apr 2019 19:06:07 +0000
+
+buildah (1.6-1~dev~ubuntu16.04.2~ppa8) xenial; urgency=medium
+
+  * autobuilt dd3dff5
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 18 Dec 2018 15:43:21 +0000
+
+buildah (1.6-1~dev~ubuntu16.04.2~ppa7) xenial; urgency=medium
+
+  * autobuilt 96c68db
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 15 Dec 2018 15:40:18 +0000
+
+buildah (1.6-1~dev~ubuntu16.04.2~ppa6) xenial; urgency=medium
+
+  * autobuilt de7f480
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 13 Dec 2018 15:39:29 +0000
+
+buildah (1.6-1~dev~ubuntu16.04.2~ppa5) xenial; urgency=medium
+
+  * autobuilt 90ea890
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 11 Dec 2018 15:37:57 +0000
+
+buildah (1.6-1~dev~ubuntu16.04.2~ppa4) xenial; urgency=medium
+
+  * autobuilt dd0f4f1
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 08 Dec 2018 15:36:09 +0000
+
+buildah (1.6-1~dev~ubuntu16.04.2~ppa3) xenial; urgency=medium
+
+  * autobuilt 0d2dc14
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 07 Dec 2018 15:36:09 +0000
+
+buildah (1.6-1~dev~ubuntu16.04.2~ppa2) xenial; urgency=medium
+
+  * autobuilt 5cca1d6
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 05 Dec 2018 18:48:45 +0000
+
+buildah (1.6-1~dev~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * autobuilt 01f9ae2 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Wed, 05 Dec 2018 13:37:52 -0500
+
+buildah (1.5-1~dev~ubuntu16.04.2~ppa6) xenial; urgency=medium
+
+  * autobuilt c9cb148
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 20 Nov 2018 15:26:31 +0000
+
+buildah (1.5-1~dev~ubuntu16.04.2~ppa5) xenial; urgency=medium
+
+  * autobuilt 18309de
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 16 Nov 2018 15:24:44 +0000
+
+buildah (1.5-1~dev~ubuntu16.04.2~ppa4) xenial; urgency=medium
+
+  * autobuilt dac7819
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 14 Nov 2018 15:25:31 +0000
+
+buildah (1.5-1~dev~ubuntu16.04.2~ppa3) xenial; urgency=medium
+
+  * autobuilt a32f8da
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 13 Nov 2018 15:23:37 +0000
+
+buildah (1.5-1~dev~ubuntu16.04.2~ppa2) xenial; urgency=medium
+
+  * autobuilt fb2b2bd
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 12 Nov 2018 15:22:51 +0000
+
+buildah (1.5-1~dev~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * bump to 1.5, autobuilt 9add3c8
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 11 Nov 2018 06:02:01 +0000
+
+buildah (1.4-1~dev~ubuntu16.04.2~ppa5) xenial; urgency=medium
+
+  * debian/rules update 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 20 Aug 2018 15:41:12 -0400
+
+buildah (1.4-1~dev~ubuntu16.04.2~ppa4) xenial; urgency=medium
+
+  * substitute make clean with cleanup steps 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 20 Aug 2018 10:35:25 -0400
+
+buildah (1.4-1~dev~ubuntu16.04.2~ppa3) xenial; urgency=medium
+
+  * build docs from inside docs dir 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 20 Aug 2018 10:27:24 -0400
+
+buildah (1.4-1~dev~ubuntu16.04.2~ppa2) xenial; urgency=medium
+
+  * avoid make clean
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 20 Aug 2018 10:19:58 -0400
+
+buildah (1.4-1~dev~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * autobuilt 3bdbcdf
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 20 Aug 2018 10:12:37 -0400
+
+buildah (1.3-1~dev~ubuntu16.04.2~ppa3) xenial; urgency=medium
+
+  * update doc build step 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 20 Aug 2018 10:11:11 -0400
+
+buildah (1.3-1~dev~ubuntu16.04.2~ppa2) xenial; urgency=medium
+
+  * autobuilt 3bdbcdf
+  * don't check GIT_COMMIT during build
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Sun, 19 Aug 2018 14:29:18 +0000
+
+buildah (1.3-1~dev~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * autobuilt 3bdbcdf
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Sun, 19 Aug 2018 14:29:18 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa65) xenial; urgency=medium
+
+  * autobuilt 02f54e4
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 01 Aug 2018 14:29:18 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa64) xenial; urgency=medium
+
+  * autobuilt be03809
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 31 Jul 2018 14:31:07 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa63) xenial; urgency=medium
+
+  * autobuilt be03809
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 30 Jul 2018 14:28:31 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa62) xenial; urgency=medium
+
+  * autobuilt be03809
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 29 Jul 2018 14:27:42 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa61) xenial; urgency=medium
+
+  * autobuilt c18724e
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 28 Jul 2018 14:27:21 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa60) xenial; urgency=medium
+
+  * autobuilt 4976d8c
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 27 Jul 2018 14:26:42 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa59) xenial; urgency=medium
+
+  * autobuilt 4976d8c
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 26 Jul 2018 14:27:11 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa58) xenial; urgency=medium
+
+  * autobuilt e5f7539
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 25 Jul 2018 14:26:12 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa57) xenial; urgency=medium
+
+  * autobuilt c845d91
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 24 Jul 2018 14:25:22 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa56) xenial; urgency=medium
+
+  * autobuilt 826733a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 23 Jul 2018 14:25:12 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa55) xenial; urgency=medium
+
+  * autobuilt 826733a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 22 Jul 2018 14:25:35 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa54) xenial; urgency=medium
+
+  * autobuilt 826733a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 21 Jul 2018 14:24:40 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa53) xenial; urgency=medium
+
+  * autobuilt 826733a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 20 Jul 2018 14:24:22 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa52) xenial; urgency=medium
+
+  * autobuilt 47da945
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 19 Jul 2018 14:24:24 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa51) xenial; urgency=medium
+
+  * autobuilt 1215b16
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 18 Jul 2018 14:24:13 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa50) xenial; urgency=medium
+
+  * autobuilt 2167b30
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 17 Jul 2018 14:21:49 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa49) xenial; urgency=medium
+
+  * autobuilt 2167b30
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 16 Jul 2018 14:21:45 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa48) xenial; urgency=medium
+
+  * autobuilt 791d04b
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 15 Jul 2018 14:20:47 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa47) xenial; urgency=medium
+
+  * autobuilt aa1b350
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 14 Jul 2018 14:19:59 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa46) xenial; urgency=medium
+
+  * autobuilt 1119820
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 13 Jul 2018 14:19:12 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa45) xenial; urgency=medium
+
+  * autobuilt 1119820
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 12 Jul 2018 14:18:51 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa44) xenial; urgency=medium
+
+  * autobuilt 3fb864b
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 11 Jul 2018 14:18:34 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa43) xenial; urgency=medium
+
+  * autobuilt 3fb864b
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 10 Jul 2018 14:18:56 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa42) xenial; urgency=medium
+
+  * autobuilt 3fb864b
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 09 Jul 2018 14:18:21 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa41) xenial; urgency=medium
+
+  * autobuilt 3fb864b
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 08 Jul 2018 14:17:28 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa40) xenial; urgency=medium
+
+  * autobuilt 8be2b62
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 07 Jul 2018 14:17:19 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa39) xenial; urgency=medium
+
+  * autobuilt 733cd20
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 06 Jul 2018 14:17:12 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa38) xenial; urgency=medium
+
+  * autobuilt a59fb7a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 05 Jul 2018 14:16:53 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa37) xenial; urgency=medium
+
+  * autobuilt a59fb7a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 04 Jul 2018 14:15:55 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa36) xenial; urgency=medium
+
+  * autobuilt 5c11c34
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 03 Jul 2018 14:16:27 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa35) xenial; urgency=medium
+
+  * autobuilt 5c11c34
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 02 Jul 2018 14:14:42 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa34) xenial; urgency=medium
+
+  * autobuilt 5cd9be6
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 01 Jul 2018 14:14:42 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa33) xenial; urgency=medium
+
+  * autobuilt 6f72599
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 30 Jun 2018 14:14:14 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa32) xenial; urgency=medium
+
+  * autobuilt b965fc4
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 29 Jun 2018 14:13:11 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa31) xenial; urgency=medium
+
+  * autobuilt 1acccce
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 28 Jun 2018 14:14:35 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa30) xenial; urgency=medium
+
+  * autobuilt e098ef4
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 27 Jun 2018 14:13:17 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa29) xenial; urgency=medium
+
+  * autobuilt 90babdf
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 26 Jun 2018 14:12:25 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa28) xenial; urgency=medium
+
+  * autobuilt 7a5fee0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 25 Jun 2018 14:14:28 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa27) xenial; urgency=medium
+
+  * autobuilt 2ac95ea
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 24 Jun 2018 14:10:16 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa26) xenial; urgency=medium
+
+  * autobuilt 0143a44
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 23 Jun 2018 14:25:52 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa25) xenial; urgency=medium
+
+  * autobuilt 35cbd6e
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 22 Jun 2018 14:09:20 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa24) xenial; urgency=medium
+
+  * autobuilt 35cbd6e
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 21 Jun 2018 14:09:56 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa23) xenial; urgency=medium
+
+  * autobuilt 4740a49
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 20 Jun 2018 14:07:57 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa22) xenial; urgency=medium
+
+  * autobuilt 9930e03
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 19 Jun 2018 14:08:55 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa21) xenial; urgency=medium
+
+  * autobuilt 93d8606
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 18 Jun 2018 14:07:04 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa20) xenial; urgency=medium
+
+  * autobuilt 93d8606
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 17 Jun 2018 14:06:47 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa19) xenial; urgency=medium
+
+  * autobuilt fc438bb
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 16 Jun 2018 14:05:46 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa18) xenial; urgency=medium
+
+  * autobuilt fc438bb
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 15 Jun 2018 14:05:40 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa17) xenial; urgency=medium
+
+  * autobuilt 261e129
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 14 Jun 2018 14:07:08 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa16) xenial; urgency=medium
+
+  * autobuilt 3a849c0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 13 Jun 2018 14:08:43 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa15) xenial; urgency=medium
+
+  * autobuilt fe8f707
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 12 Jun 2018 14:04:20 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa14) xenial; urgency=medium
+
+  * autobuilt 50c33f4
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 11 Jun 2018 14:07:51 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa13) xenial; urgency=medium
+
+  * autobuilt 10ca462
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 10 Jun 2018 14:03:11 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa12) xenial; urgency=medium
+
+  * autobuilt f449b28
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 09 Jun 2018 14:01:49 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa11) xenial; urgency=medium
+
+  * autobuilt 39d0582
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 08 Jun 2018 14:02:07 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa10) xenial; urgency=medium
+
+  * autobuilt c07017d
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 07 Jun 2018 14:03:44 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa9) xenial; urgency=medium
+
+  * autobuilt 69b0a82
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 06 Jun 2018 14:00:44 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa8) xenial; urgency=medium
+
+  * autobuilt d3d097b
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 05 Jun 2018 13:59:32 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa7) xenial; urgency=medium
+
+  * autobuilt f90b6c0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 04 Jun 2018 14:00:02 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa6) xenial; urgency=medium
+
+  * autobuilt f90b6c0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 03 Jun 2018 13:58:43 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa5) xenial; urgency=medium
+
+  * autobuilt 70641ee
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 02 Jun 2018 13:58:12 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa4) xenial; urgency=medium
+
+  * autobuilt a3382c3
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 01 Jun 2018 19:37:28 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa3) xenial; urgency=medium
+
+  * avoid checkign for GIT_COMMIT in Makefile during debuild
+  * autobuilt 7cc1292
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Fri, 01 Jun 2018 11:52:08 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa2) xenial; urgency=medium
+
+  * add GIT_COMMIT in Makefile manually for non-travis build
+  * autobuilt 7cc1292
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Fri, 01 Jun 2018 11:52:08 +0000
+
+buildah (1.0-1~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * bump to v1.0
+  * autobuilt 7cc1292
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Fri, 01 Jun 2018 10:52:08 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa26) xenial; urgency=medium
+
+  * autobuilt a96820b
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 20 May 2018 13:52:08 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa25) xenial; urgency=medium
+
+  * autobuilt 691451c
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 19 May 2018 13:51:23 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa24) xenial; urgency=medium
+
+  * autobuilt 2749191
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 17 May 2018 13:51:21 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa23) xenial; urgency=medium
+
+  * autobuilt 3fb625d
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 16 May 2018 14:41:07 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa22) xenial; urgency=medium
+
+  * autobuilt 8515867
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 15 May 2018 13:49:43 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa21) xenial; urgency=medium
+
+  * autobuilt ce8d467
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 12 May 2018 13:48:29 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa20) xenial; urgency=medium
+
+  * autobuilt 2ea3e11
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 11 May 2018 13:48:48 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa19) xenial; urgency=medium
+
+  * autobuilt fe204e4
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 08 May 2018 13:47:37 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa18) xenial; urgency=medium
+
+  * autobuilt 8e77a0c
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 07 May 2018 13:45:54 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa17) xenial; urgency=medium
+
+  * autobuilt dd02e70
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 06 May 2018 13:44:59 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa16) xenial; urgency=medium
+
+  * autobuilt 45772e8
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 04 May 2018 13:45:28 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa15) xenial; urgency=medium
+
+  * autobuilt 6fe2b55
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 03 May 2018 09:44:00 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa14) xenial; urgency=medium
+
+  * autobuilt d0b8769
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 02 May 2018 13:44:00 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa13) xenial; urgency=medium
+
+  * autobuilt adb8e6f
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 01 May 2018 13:43:12 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa12) xenial; urgency=medium
+
+  * autobuilt 579103a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 30 Apr 2018 19:32:11 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa11) xenial; urgency=medium
+
+  * autobuilt 072ee88
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 30 Apr 2018 14:30:29 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa10) xenial; urgency=medium
+
+  * autobuilt 072ee88
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 30 Apr 2018 14:30:29 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa9) xenial; urgency=medium
+
+  * autobuilt 072ee88
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 30 Apr 2018 14:30:29 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa8) xenial; urgency=medium
+
+  * Temporarily substitute GIT_COMMIT value in Makefile to make debbuild happy
+  * autobuilt c50c287
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Sat, 28 Apr 2018 23:26:22 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa7) xenial; urgency=medium
+
+  * updated build deps and rules
+  * autobuilt c50c287
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Sat, 28 Apr 2018 23:26:22 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa6) xenial; urgency=medium
+
+  * autobuilt c50c287
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 28 Apr 2018 23:26:22 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa5) xenial; urgency=medium
+
+  * autobuilt d84f05a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org> Fri, 20 Apr 2018 13:38:36 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa4) xenial; urgency=medium
+
+  * autobuilt e008b73
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 19 Apr 2018 14:04:56 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa3) xenial; urgency=medium
+
+  * autobuilt e008b73
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 19 Apr 2018 13:37:57 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa2) xenial; urgency=medium
+
+  * autobuilt bae06b1
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 19 Apr 2018 05:43:34 +0000
+
+buildah (0.16-1~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * bump to 0.16, autobuilt b20e423
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Wed, 04 Apr 2018 15:05:20 +0000
+
+buildah (0.15-1~ubuntu16.04.2~ppa6) xenial; urgency=medium
+
+  * autobuilt b20e423
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Wed, 04 Apr 2018 14:58:12 +0000
+
+buildah (0.15-1~ubuntu16.04.2~ppa5) xenial; urgency=medium
+
+  * autobuilt 28a64ee
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Fri, 23 Mar 2018 15:01:10 +0000
+
+buildah (0.15-1~ubuntu16.04.2~ppa4) xenial; urgency=medium
+
+  * autobuilt 28a64ee
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Fri, 23 Mar 2018 15:00:21 +0000
+
+buildah (0.15-1~ubuntu16.04.2~ppa3) xenial; urgency=medium
+
+  * autobuilt 28a64ee
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Fri, 23 Mar 2018 14:55:24 +0000
+
+buildah (0.15-1~ubuntu16.04.2~ppa2) xenial; urgency=medium
+
+  * autobuilt 28a64ee
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Fri, 23 Mar 2018 14:53:10 +0000
+
+buildah (0.15-1~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * bump to 0.15, autobuilt 28a64ee
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Fri, 23 Mar 2018 14:52:01 +0000
+
+buildah (0.12-2~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * disable ppc64el on PPA cause no golang-1.8
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 12 Feb 2018 20:33:16 +0000
+
+buildah (0.12-1~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * bump to v0.12
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 12 Feb 2018 20:14:52 +0000
+
+buildah (0.11-1~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * bump to v0.11
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Fri, 19 Jan 2018 14:13:40 +0000
+
+buildah (0.10-1~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * bump to v0.10
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Wed, 27 Dec 2017 15:35:22 +0000
+
+buildah (0.4-1~ubuntu16.04.2~ppa1) xenial; urgency=medium
+
+  * bump to v0.4
+  * built commit 3cc0218
+  * correct changelog/package tags for xenial
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 23 Oct 2017 15:29:46 -0400
+
+buildah (0.3-1~ubuntu17.04~ppa4) xenial; urgency=medium
+
+  * depend on libostree-1-1 at runtime 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Thu, 31 Aug 2017 10:38:54 -0400
+
+buildah (0.3-1~ubuntu17.04~ppa3) xenial; urgency=medium
+
+  * ppa2 rejected cause different source 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 29 Aug 2017 16:09:44 -0400
+
+buildah (0.3-1~ubuntu17.04~ppa2) xenial; urgency=medium
+
+  * include libostree-dev as builddep 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 29 Aug 2017 15:50:43 -0400
+
+buildah (0.3-1~ubuntu17.04~ppa1) xenial; urgency=medium
+
+  * bump to v0.3
+  * built commit c9c735e
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 29 Aug 2017 15:35:07 -0400
+
+buildah (0.1-1~ubuntu17.04~ppa20) xenial; urgency=medium
+
+  * use golang in default repos, not the one from gophers' ppa 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 04 Jul 2017 22:23:56 -0400
+
+buildah (0.1-1~ubuntu17.04~ppa19) xenial; urgency=medium
+
+  * add btrfs-progs to build dep 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 04 Jul 2017 22:11:21 -0400
+
+buildah (0.1-1~ubuntu17.04~ppa18) xenial; urgency=medium
+
+  * update build deps, needs golang-1.7 and dh-golang 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 04 Jul 2017 22:06:12 -0400
+
+buildah (0.1-1~ubuntu17.04~ppa17) xenial; urgency=medium
+
+  * previous build already uploaded but not published, increment number 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 04 Jul 2017 22:02:17 -0400
+
+buildah (0.1-1~ubuntu17.04~ppa16) xenial; urgency=medium
+
+  * package supersedes what's in xenial ppa
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Wed, 28 Jun 2017 11:14:35 -0400
+
+buildah (0.1-1ppa8) xenial; urgency=medium
+
+  * s/libdevmapper-deb/libdevmapper-dev
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 27 Jun 2017 09:55:07 -0400
+
+buildah (0.1-1ppa7) xenial; urgency=medium
+
+  * add libgpgme-dev, libdevmapper-dev and btrfs-progs to deps
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 27 Jun 2017 09:43:01 -0400
+
+buildah (0.1-1ppa6) xenial; urgency=medium
+
+  * add dh-golang to build depends
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 27 Jun 2017 09:32:12 -0400
+
+buildah (0.1-1ppa5) xenial; urgency=medium
+
+  * remvoe git from build dependencies
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 27 Jun 2017 09:21:57 -0400
+
+buildah (0.1-1ppa4) xenial; urgency=medium
+
+  * make sure tarball is unmodified from the one in ppa2
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 27 Jun 2017 09:12:45 -0400
+
+buildah (0.1-1ppa3) xenial; urgency=medium
+
+  * add git to build dep (this is probably not optimal but gets the job done)
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 26 Jun 2017 23:06:49 -0400
+
+buildah (0.1-1ppa2) xenial; urgency=medium
+
+  * update Section field in debian/control
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 26 Jun 2017 11:06:40 -0400
+
+buildah (0.1-1ppa1) xenial; urgency=medium
+
+  * Initial package
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Sun, 25 Jun 2017 23:06:49 -0400

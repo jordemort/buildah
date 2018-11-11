@@ -1,0 +1,28 @@
+Source: buildah
+Section: devel
+Priority: optional
+Maintainer: Lokesh Mandvekar <lsm5@fedoraproject.org>
+Build-Depends: debhelper (>=9),
+    rsync,
+    libassuan-dev,
+    libdevmapper-dev,
+    libgpgme11-dev,
+    dh-golang,
+    golang-1.10,
+    libglib2.0-dev,
+    libseccomp-dev,
+    go-md2man,
+    git,
+    btrfs-tools
+Standards-Version: 3.9.6
+Homepage: https://github.com/containers/buildah.git
+Vcs-Git: git://github.com/lsm5/buildah.git
+
+Package: buildah
+Architecture: any
+Depends: ${misc:Depends},
+    cri-o-runc,
+    libgpgme11,
+    libseccomp2,
+    skopeo-containers
+Description: A command line tool used for creating OCI images.
