@@ -1,3 +1,9 @@
+buildah (1.8-1~dev~ubuntu18.04~ppa18) bionic; urgency=medium
+
+  * autobuilt 29f306c
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 08 Apr 2019 19:09:59 +0000
+
 buildah (1.8-1~dev~ubuntu18.04~ppa17) bionic; urgency=medium
 
   * autobuilt 29f306c 
