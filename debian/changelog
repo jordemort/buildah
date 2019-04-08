@@ -1,0 +1,183 @@
+buildah (1.8-1~dev~ubuntu18.04~ppa17) bionic; urgency=medium
+
+  * autobuilt 29f306c 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 08 Apr 2019 18:53:17 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa16) bionic; urgency=medium
+
+  * autobuilt 29f306c 
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 08 Apr 2019 18:37:52 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa15) bionic; urgency=medium
+
+  * autobuilt a6ee26b
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 05 Apr 2019 23:07:00 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa14) bionic; urgency=medium
+
+  * autobuilt 8dd8e1a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 04 Apr 2019 23:06:48 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa13) bionic; urgency=medium
+
+  * autobuilt 9e1967a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 31 Mar 2019 23:03:38 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa12) bionic; urgency=medium
+
+  * autobuilt 13d9142
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 29 Mar 2019 23:02:42 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa11) bionic; urgency=medium
+
+  * autobuilt a9bd025
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 28 Mar 2019 23:05:42 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa10) bionic; urgency=medium
+
+  * autobuilt c933fe4
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 27 Mar 2019 23:41:09 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa9) bionic; urgency=medium
+
+  * autobuilt 3d74031
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 26 Mar 2019 23:00:20 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa8) bionic; urgency=medium
+
+  * autobuilt 03fae01
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 24 Mar 2019 22:58:56 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa7) bionic; urgency=medium
+
+  * autobuilt d1c75ea
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 23 Mar 2019 22:58:51 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa6) bionic; urgency=medium
+
+  * autobuilt 180ee7d
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 22 Mar 2019 22:59:28 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa5) bionic; urgency=medium
+
+  * autobuilt 24c3174
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 21 Mar 2019 22:59:08 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa4) bionic; urgency=medium
+
+  * autobuilt e6262e3
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 20 Mar 2019 22:59:17 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa3) bionic; urgency=medium
+
+  * autobuilt 1ba9201
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 19 Mar 2019 22:58:37 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa2) bionic; urgency=medium
+
+  * autobuilt d0f8515
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 18 Mar 2019 22:57:49 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa1) bionic; urgency=medium
+
+  * bump to v1.8
+  * autobuilt a986f34
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Sun, 17 Mar 2019 21:41:28 +0000
+
+buildah (1.6-1~dev~ubuntu18.04~ppa4) bionic; urgency=medium
+
+  * autobuilt dd3dff5
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 18 Dec 2018 22:12:27 +0000
+
+buildah (1.6-1~dev~ubuntu18.04~ppa3) bionic; urgency=medium
+
+  * autobuilt 96c68db
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 15 Dec 2018 22:09:17 +0000
+
+buildah (1.6-1~dev~ubuntu18.04~ppa2) bionic; urgency=medium
+
+  * autobuilt de7f480
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 13 Dec 2018 22:08:20 +0000
+
+buildah (1.6-1~dev~ubuntu18.04~ppa1) bionic; urgency=medium
+
+  * bump to v1.6, autobuilt 90ea890
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Thu, 13 Dec 2018 07:20:17 -0500
+
+buildah (1.5-1~dev~ubuntu18.04~ppa8) bionic; urgency=medium
+
+  * autobuilt e577d58
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 19 Nov 2018 21:56:21 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa7) bionic; urgency=medium
+
+  * autobuilt 18309de
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 16 Nov 2018 21:55:20 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa6) bionic; urgency=medium
+
+  * autobuilt dac7819
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 14 Nov 2018 21:55:13 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa5) bionic; urgency=medium
+
+  * autobuilt e0d0ad3
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 13 Nov 2018 21:54:56 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa4) bionic; urgency=medium
+
+  * autobuilt fb2b2bd
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 12 Nov 2018 21:53:19 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa3) bionic; urgency=medium
+
+  * autobuilt 9add3c8
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 09 Nov 2018 21:51:54 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa2) bionic; urgency=medium
+
+  * autobuilt 74e0b6f
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 08 Nov 2018 22:08:30 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa1) bionic; urgency=medium
+
+  * bump to v1.5
+  * built 74e0b6f
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Thu, 08 Nov 2018 16:39:23 -0500
+
+buildah (1.4-1~dev~ubuntu18.04~ppa5) bionic; urgency=medium
+
+  * built 3bdbcdf
+  * Initial package
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 20 Aug 2018 15:41:12 -0400
+
