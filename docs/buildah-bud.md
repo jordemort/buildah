@@ -40,7 +40,7 @@ Note: this information is not present in Docker image formats, so it is discarde
 
 **--authfile** *path*
 
-Path of the authentication file. Default is ${XDG\_RUNTIME\_DIR}/containers/auth.json, which is set using `podman login`.
+Path of the authentication file. Default is ${XDG\_RUNTIME\_DIR}/containers/auth.json, which is set using `buildah login`.
 If the authorization state is not found there, $HOME/.docker/config.json is checked, which is set using `docker login`.
 
 **--build-arg** *arg=value*
@@ -185,6 +185,18 @@ This is a Docker specific option to disable image verification to a Docker
 registry and is not supported by Buildah.  This flag is a NOOP and provided
 soley for scripting compatibility.
 
+**--dns**=[]
+
+Set custom DNS servers
+
+**--dns-option**=[]
+
+Set custom DNS options
+
+**--dns-search**=[]
+
+Set custom DNS search domains
+
 **--file, -f** *Dockerfile*
 
 Specifies a Dockerfile which contains instructions for building the image,
@@ -209,6 +221,16 @@ Recognized formats include *oci* (OCI image-spec v1.0, the default) and
 
 Note: You can also override the default format by setting the BUILDAH\_FORMAT
 environment variable.  `export BUILDAH_FORMAT=docker`
+
+**--http-proxy**
+
+By default proxy environment variables are passed into the container if set
+for the buildah process.  This can be disabled by setting the `--http-proxy`
+option to `false`.  The environment variables passed in include `http_proxy`,
+`https_proxy`, `ftp_proxy`, `no_proxy`, and also the upper case versions of
+those.
+
+Defaults to `true`
 
 **--iidfile** *ImageIDfile*
 
@@ -607,6 +629,8 @@ buildah bud --layers --force-rm -t imageName .
 
 buildah bud --no-cache --rm=false -t imageName .
 
+buildah bud --dns-search=example.com --dns=223.5.5.5 --dns-option=use-vc .
+
 ### Building an image using a URL
 
   This will clone the specified GitHub repository from the URL and use it as context. The Dockerfile at the root of the repository is used as Dockerfile. This only works if the GitHub repository is a dedicated repository.
@@ -633,4 +657,4 @@ registries.conf is the configuration file which specifies which container regist
 Signature policy file.  This defines the trust policy for container images.  Controls which container registries can be used for image, and whether or not the tool should trust the images.
 
 ## SEE ALSO
-buildah(1), CPP(1), podman-login(1), docker-login(1), namespaces(7), pid\_namespaces(7), policy.json(5), registries.conf(5), user\_namespaces(7)
+buildah(1), CPP(1), buildah-login(1), docker-login(1), namespaces(7), pid\_namespaces(7), policy.json(5), registries.conf(5), user\_namespaces(7)

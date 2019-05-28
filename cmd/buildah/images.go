@@ -10,7 +10,9 @@ import (
 
 	buildahcli "github.com/containers/buildah/pkg/cli"
 	"github.com/containers/buildah/pkg/formats"
+	"github.com/containers/buildah/pkg/parse"
 	is "github.com/containers/image/storage"
+	"github.com/containers/image/types"
 	"github.com/containers/storage"
 	units "github.com/docker/go-units"
 	"github.com/pkg/errors"
@@ -122,6 +124,11 @@ func imagesCmd(c *cobra.Command, args []string, iopts *imageResults) error {
 		return err
 	}
 
+	systemContext, err := parse.SystemContextFromOptions(c)
+	if err != nil {
+		return errors.Wrapf(err, "error building system context")
+	}
+
 	images, err := store.Images()
 	if err != nil {
 		return errors.Wrapf(err, "error reading images")
@@ -150,7 +157,7 @@ func imagesCmd(c *cobra.Command, args []string, iopts *imageResults) error {
 		}
 	}
 
-	return outputImages(ctx, images, store, params, name, opts)
+	return outputImages(ctx, systemContext, store, images, params, name, opts)
 }
 
 func parseFilter(ctx context.Context, store storage.Store, images []storage.Image, filter string) (*filterParams, error) {
@@ -237,13 +244,13 @@ func outputHeader(opts imageOptions) string {
 
 type imagesSorted []imageOutputParams
 
-func outputImages(ctx context.Context, images []storage.Image, store storage.Store, filters *filterParams, argName string, opts imageOptions) error {
+func outputImages(ctx context.Context, systemContext *types.SystemContext, store storage.Store, images []storage.Image, filters *filterParams, argName string, opts imageOptions) error {
 	found := false
 	var imagesParams imagesSorted
 	jsonImages := []jsonImage{}
 	for _, image := range images {
 		createdTime := image.Created
-		inspectedTime, digest, size, _ := getDateAndDigestAndSize(ctx, image, store)
+		inspectedTime, digest, size, _ := getDateAndDigestAndSize(ctx, store, image)
 		if !inspectedTime.IsZero() {
 			if createdTime != inspectedTime {
 				logrus.Debugf("image record and configuration disagree on the image's creation time for %q, using the one from the configuration", image)
@@ -252,11 +259,12 @@ func outputImages(ctx context.Context, images []storage.Image, store storage.Sto
 		}
 		createdTime = createdTime.Local()
 
-		// If all is false and the image doesn't have a name, check to see if the top layer of the image is a parent
-		// to another image's top layer. If it is, then it is an intermediate image so don't print out if the --all flag
-		// is not set.
+		// If "all" is false and this image doesn't have a name, check
+		// to see if the image is the parent of any other image.  If it
+		// is, then it is an intermediate image, so don't list it if
+		// the --all flag is not set.
 		if !opts.all && len(image.Names) == 0 {
-			isParent, err := imageIsParent(store, image.TopLayer)
+			isParent, err := imageIsParent(ctx, systemContext, store, &image)
 			if err != nil {
 				logrus.Errorf("error checking if image is a parent %q: %v", image.ID, err)
 			}
@@ -278,7 +286,7 @@ func outputImages(ctx context.Context, images []storage.Image, store storage.Sto
 				}
 				found = true
 
-				if !matchesFilter(ctx, image, store, name+":"+tag, filters) {
+				if !matchesFilter(ctx, store, image, name+":"+tag, filters) {
 					continue
 				}
 				if opts.json {
@@ -349,13 +357,13 @@ func imagesToGeneric(templParams []imageOutputParams) (genericParams []interface
 	return genericParams
 }
 
-func matchesFilter(ctx context.Context, image storage.Image, store storage.Store, name string, params *filterParams) bool {
+func matchesFilter(ctx context.Context, store storage.Store, image storage.Image, name string, params *filterParams) bool {
 	if params == nil {
 		return true
 	}
 	if params.dangling != "" && !matchesDangling(name, params.dangling) {
 		return false
-	} else if params.label != "" && !matchesLabel(ctx, image, store, params.label) {
+	} else if params.label != "" && !matchesLabel(ctx, store, image, params.label) {
 		return false
 	} else if params.beforeImage != "" && !matchesBeforeImage(image, name, params) {
 		return false
@@ -376,7 +384,7 @@ func matchesDangling(name string, dangling string) bool {
 	return false
 }
 
-func matchesLabel(ctx context.Context, image storage.Image, store storage.Store, label string) bool {
+func matchesLabel(ctx context.Context, store storage.Store, image storage.Image, label string) bool {
 	storeRef, err := is.Transport.ParseStoreReference(store, image.ID)
 	if err != nil {
 		return false

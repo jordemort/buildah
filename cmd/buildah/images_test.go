@@ -32,48 +32,48 @@ func TestSizeFormatting(t *testing.T) {
 }
 
 func TestMatchWithTag(t *testing.T) {
-	isMatch := matchesReference("docker.io/kubernetes/pause:latest", "pause:latest")
+	isMatch := matchesReference("gcr.io/pause:latest", "pause:latest")
 	if !isMatch {
 		t.Error("expected match, got not match")
 	}
 
-	isMatch = matchesReference("docker.io/kubernetes/pause:latest", "kubernetes/pause:latest")
-	if !isMatch {
-		t.Error("expected match, got no match")
+	isMatch = matchesReference("gcr.io/pause:latest", "kubernetes/pause:latest")
+	if isMatch {
+		t.Error("expected not match, got match")
 	}
 }
 
 func TestNoMatchesReferenceWithTag(t *testing.T) {
-	isMatch := matchesReference("docker.io/kubernetes/pause:latest", "redis:latest")
+	isMatch := matchesReference("gcr.io/pause:latest", "redis:latest")
 	if isMatch {
 		t.Error("expected no match, got match")
 	}
 
-	isMatch = matchesReference("docker.io/kubernetes/pause:latest", "kubernetes/redis:latest")
+	isMatch = matchesReference("gcr.io/pause:latest", "kubernetes/redis:latest")
 	if isMatch {
 		t.Error("expected no match, got match")
 	}
 }
 
 func TestMatchesReferenceWithoutTag(t *testing.T) {
-	isMatch := matchesReference("docker.io/kubernetes/pause:latest", "pause")
+	isMatch := matchesReference("gcr.io/pause:latest", "pause")
 	if !isMatch {
 		t.Error("expected match, got not match")
 	}
 
-	isMatch = matchesReference("docker.io/kubernetes/pause:latest", "kubernetes/pause")
-	if !isMatch {
-		t.Error("expected match, got no match")
+	isMatch = matchesReference("gcr.io/pause:latest", "kubernetes/pause")
+	if isMatch {
+		t.Error("expected not match, got match")
 	}
 }
 
 func TestNoMatchesReferenceWithoutTag(t *testing.T) {
-	isMatch := matchesReference("docker.io/kubernetes/pause:latest", "redis")
+	isMatch := matchesReference("gcr.io/pause:latest", "redis")
 	if isMatch {
 		t.Error("expected no match, got match")
 	}
 
-	isMatch = matchesReference("docker.io/kubernetes/pause:latest", "kubernetes/redis")
+	isMatch = matchesReference("gcr.io/pause:latest", "kubernetes/redis")
 	if isMatch {
 		t.Error("expected no match, got match")
 	}
@@ -106,7 +106,7 @@ func TestOutputImagesQuietNotTruncated(t *testing.T) {
 
 	// Tests quiet and non-truncated output
 	output, err := captureOutputWithError(func() error {
-		return outputImages(getContext(), images[:1], store, nil, "", opts)
+		return outputImages(getContext(), &testSystemContext, store, images[:1], nil, "", opts)
 	})
 	expectedOutput := fmt.Sprintf("sha256:%s\n", images[0].ID)
 	if err != nil {
@@ -144,7 +144,7 @@ func TestOutputImagesFormatString(t *testing.T) {
 
 	// Tests output with format template
 	output, err := captureOutputWithError(func() error {
-		return outputImages(getContext(), images[:1], store, nil, "", opts)
+		return outputImages(getContext(), &testSystemContext, store, images[:1], nil, "", opts)
 	})
 	expectedOutput := images[0].ID
 	if err != nil {
@@ -183,7 +183,7 @@ func TestOutputImagesArgNoMatch(t *testing.T) {
 	// because all images in the repository must have a tag, and here the tag is an
 	// empty string
 	_, err = captureOutputWithError(func() error {
-		return outputImages(getContext(), images[:1], store, nil, "foo:", opts)
+		return outputImages(getContext(), &testSystemContext, store, images[:1], nil, "foo:", opts)
 	})
 	if err == nil || err.Error() != "No such image foo:" {
 		t.Fatalf("expected error arg no match")

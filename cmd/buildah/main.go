@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/containers/buildah"
 	"os"
 
+	"github.com/containers/buildah"
+	"github.com/containers/buildah/pkg/unshare"
 	"github.com/containers/storage"
 	ispecs "github.com/opencontainers/image-spec/specs-go"
 	rspecs "github.com/opencontainers/runtime-spec/specs-go"
@@ -97,7 +98,12 @@ func before(cmd *cobra.Command, args []string) error {
 	if globalFlagResults.Debug {
 		logrus.SetLevel(logrus.DebugLevel)
 	}
-	maybeReexecUsingUserNamespace(cmd.Use, false)
+
+	switch cmd.Use {
+	case "", "help", "version", "mount":
+		return nil
+	}
+	unshare.MaybeReexecUsingUserNamespace(false)
 	return nil
 }
 
