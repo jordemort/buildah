@@ -1,3 +1,10 @@
+buildah (1.8.2) stretch; urgency=medium
+
+  * Update to upstream 1.8.2
+  * Build with stretch-backports golang
+
+ -- Jordan Webb <jordemort@github.com>  Tue, 09 Apr 2019 14:37:19 +0000
+
 buildah (1.7.2+stretch1) stretch; urgency=medium
 
   * Build 1.7.2 for stretch
@@ -12,13 +19,13 @@ buildah (1.8-1~dev~ubuntu18.04~ppa18) bionic; urgency=medium
 
 buildah (1.8-1~dev~ubuntu18.04~ppa17) bionic; urgency=medium
 
-  * autobuilt 29f306c 
+  * autobuilt 29f306c
 
  -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 08 Apr 2019 18:53:17 +0000
 
 buildah (1.8-1~dev~ubuntu18.04~ppa16) bionic; urgency=medium
 
-  * autobuilt 29f306c 
+  * autobuilt 29f306c
 
  -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 08 Apr 2019 18:37:52 +0000
 
@@ -192,4 +199,3 @@ buildah (1.4-1~dev~ubuntu18.04~ppa5) bionic; urgency=medium
   * Initial package
 
  -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 20 Aug 2018 15:41:12 -0400
-

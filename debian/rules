@@ -34,9 +34,6 @@ BUILD_INFO=$(shell date +%s)
 LDFLAGS="-X main.buildInfo=$(BUILD_INFO)"
 DOC_LIST := $(shell ls $(DOCSDIR) | grep buildah | sed -e 's/\.md//g')
 
-export GO := /usr/lib/go-1.12/bin/go
-export PATH := /usr/lib/go-1.12/bin:$(PATH)
-
 %:
 	dh_clean
 	rm -rf buildah imgtype build
