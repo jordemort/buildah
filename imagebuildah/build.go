@@ -27,6 +27,7 @@ import (
 	"github.com/containers/image/types"
 	"github.com/containers/storage"
 	"github.com/containers/storage/pkg/archive"
+	securejoin "github.com/cyphar/filepath-securejoin"
 	docker "github.com/fsouza/go-dockerclient"
 	v1 "github.com/opencontainers/image-spec/specs-go/v1"
 	"github.com/opencontainers/runtime-spec/specs-go"
@@ -209,7 +210,6 @@ type Executor struct {
 	annotations                    []string
 	onbuild                        []string
 	layers                         bool
-	topLayers                      []string
 	useCache                       bool
 	removeIntermediateCtrs         bool
 	forceRmIntermediateCtrs        bool
@@ -480,22 +480,28 @@ func (s *StageExecutor) volumeCacheRestore() error {
 }
 
 // Copy copies data into the working tree.  The "Download" field is how
-// imagebuilder tells us the instruction was "ADD" and not "COPY".
+// imagebuilder tells us the instruction was "ADD" and not "COPY"
 func (s *StageExecutor) Copy(excludes []string, copies ...imagebuilder.Copy) error {
 	for _, copy := range copies {
-		// If the file exists, check to see if it's a symlink.
-		// If it is a symlink, convert to it's target otherwise
-		// the symlink will be overwritten.
-		fileDest, _ := os.Lstat(filepath.Join(s.mountPoint, copy.Dest))
-		if fileDest != nil {
-			if fileDest.Mode()&os.ModeSymlink != 0 {
-				if symLink, err := resolveSymlink(s.mountPoint, copy.Dest); err == nil {
-					copy.Dest = symLink
-				} else {
-					return errors.Wrapf(err, "error reading symbolic link to %q", copy.Dest)
-				}
+		// Check the file and see if part of it is a symlink.
+		// Convert it to the target if so.  To be ultrasafe
+		// do the same for the mountpoint.
+		hadFinalPathSeparator := len(copy.Dest) > 0 && copy.Dest[len(copy.Dest)-1] == os.PathSeparator
+		secureMountPoint, err := securejoin.SecureJoin("", s.mountPoint)
+		finalPath, err := securejoin.SecureJoin(secureMountPoint, copy.Dest)
+		if err != nil {
+			return errors.Wrapf(err, "error resolving symlinks for copy destination %s", copy.Dest)
+		}
+		if !strings.HasPrefix(finalPath, secureMountPoint) {
+			return errors.Wrapf(err, "error resolving copy destination %s", copy.Dest)
+		}
+		copy.Dest = strings.TrimPrefix(finalPath, secureMountPoint)
+		if len(copy.Dest) == 0 || copy.Dest[len(copy.Dest)-1] != os.PathSeparator {
+			if hadFinalPathSeparator {
+				copy.Dest += string(os.PathSeparator)
 			}
 		}
+
 		if copy.Download {
 			logrus.Debugf("ADD %#v, %#v", excludes, copy)
 		} else {
@@ -506,29 +512,61 @@ func (s *StageExecutor) Copy(excludes []string, copies ...imagebuilder.Copy) err
 		}
 		sources := []string{}
 		for _, src := range copy.Src {
+			contextDir := s.executor.contextDir
+			copyExcludes := excludes
+			var idMappingOptions *buildah.IDMappingOptions
 			if strings.HasPrefix(src, "http://") || strings.HasPrefix(src, "https://") {
 				sources = append(sources, src)
 			} else if len(copy.From) > 0 {
+				var srcRoot string
 				if other, ok := s.executor.stages[copy.From]; ok && other.index < s.index {
-					sources = append(sources, filepath.Join(other.mountPoint, src))
+					srcRoot = other.mountPoint
+					contextDir = other.mountPoint
+					idMappingOptions = &other.builder.IDMappingOptions
 				} else if builder, ok := s.executor.containerMap[copy.From]; ok {
-					sources = append(sources, filepath.Join(builder.MountPoint, src))
+					srcRoot = builder.MountPoint
+					contextDir = builder.MountPoint
+					idMappingOptions = &builder.IDMappingOptions
 				} else {
 					return errors.Errorf("the stage %q has not been built", copy.From)
 				}
+				srcSecure, err := securejoin.SecureJoin(srcRoot, src)
+				if err != nil {
+					return err
+				}
+				// If destination is a folder, we need to take extra care to
+				// ensure that files are copied with correct names (since
+				// resolving a symlink may result in a different name).
+				if hadFinalPathSeparator {
+					_, srcName := filepath.Split(src)
+					_, srcNameSecure := filepath.Split(srcSecure)
+					if srcName != srcNameSecure {
+						options := buildah.AddAndCopyOptions{
+							Chown:      copy.Chown,
+							ContextDir: contextDir,
+							Excludes:   copyExcludes,
+						}
+						if err := s.builder.Add(filepath.Join(copy.Dest, srcName), copy.Download, options, srcSecure); err != nil {
+							return err
+						}
+						continue
+					}
+				}
+				sources = append(sources, srcSecure)
+
 			} else {
 				sources = append(sources, filepath.Join(s.executor.contextDir, src))
+				copyExcludes = append(s.executor.excludes, excludes...)
 			}
-		}
-
-		options := buildah.AddAndCopyOptions{
-			Chown:      copy.Chown,
-			ContextDir: s.executor.contextDir,
-			Excludes:   s.executor.excludes,
-		}
-
-		if err := s.builder.Add(copy.Dest, copy.Download, options, sources...); err != nil {
-			return err
+			options := buildah.AddAndCopyOptions{
+				Chown:            copy.Chown,
+				ContextDir:       contextDir,
+				Excludes:         copyExcludes,
+				IDMappingOptions: idMappingOptions,
+			}
+			if err := s.builder.Add(copy.Dest, copy.Download, options, sources...); err != nil {
+				return err
+			}
 		}
 	}
 	return nil
@@ -589,7 +627,11 @@ func (s *StageExecutor) Run(run imagebuilder.Run, config docker.Config) error {
 
 	args := run.Args
 	if run.Shell {
-		args = append([]string{"/bin/sh", "-c"}, args...)
+		if len(config.Shell) > 0 && s.builder.Format == buildah.Dockerv2ImageManifest {
+			args = append(config.Shell, args...)
+		} else {
+			args = append([]string{"/bin/sh", "-c"}, args...)
+		}
 	}
 	if err := s.volumeCacheSave(); err != nil {
 		return err
@@ -846,9 +888,6 @@ func (s *StageExecutor) prepare(ctx context.Context, stage imagebuilder.Stage, f
 		// Make this our "current" working container.
 		s.mountPoint = mountPoint
 		s.builder = builder
-		// Add the top layer of this image to b.topLayers so we can
-		// keep track of them when building with cached images.
-		s.executor.topLayers = append(s.executor.topLayers, builder.TopLayer)
 	}
 	logrus.Debugln("Container ID:", builder.ContainerID)
 	return builder, nil
@@ -953,7 +992,7 @@ func (s *StageExecutor) Execute(ctx context.Context, stage imagebuilder.Stage, b
 	}
 	logImageID := func(imgID string) {
 		if s.executor.iidfile == "" {
-			fmt.Fprintf(s.executor.out, "--> %s\n", imgID)
+			fmt.Fprintf(s.executor.out, "%s\n", imgID)
 		}
 	}
 
@@ -971,7 +1010,7 @@ func (s *StageExecutor) Execute(ctx context.Context, stage imagebuilder.Stage, b
 			// We don't need to squash the base image, so just
 			// reuse the base image.
 			logCommit(s.output, -1)
-			if imgID, ref, err = s.copyExistingImage(ctx, s.builder.FromImageID, s.output); err != nil {
+			if imgID, ref, err = s.tagExistingImage(ctx, s.builder.FromImageID, s.output); err != nil {
 				return "", nil, err
 			}
 		}
@@ -1096,7 +1135,7 @@ func (s *StageExecutor) Execute(ctx context.Context, stage imagebuilder.Stage, b
 			imgID = cacheID
 			if commitName != "" {
 				logCommit(commitName, i)
-				if imgID, ref, err = s.copyExistingImage(ctx, cacheID, commitName); err != nil {
+				if imgID, ref, err = s.tagExistingImage(ctx, cacheID, commitName); err != nil {
 					return "", nil, err
 				}
 				logImageID(imgID)
@@ -1165,8 +1204,8 @@ func (s *StageExecutor) Execute(ctx context.Context, stage imagebuilder.Stage, b
 	return imgID, ref, nil
 }
 
-// copyExistingImage creates a copy of an image already in the store
-func (s *StageExecutor) copyExistingImage(ctx context.Context, cacheID, output string) (string, reference.Canonical, error) {
+// tagExistingImage adds names to an image already in the store
+func (s *StageExecutor) tagExistingImage(ctx context.Context, cacheID, output string) (string, reference.Canonical, error) {
 	// If we don't need to attach a name to the image, just return the cache ID.
 	if output == "" {
 		return cacheID, nil, nil
@@ -1218,22 +1257,32 @@ func (s *StageExecutor) layerExists(ctx context.Context, currNode *parser.Node, 
 	if err != nil {
 		return "", errors.Wrap(err, "error getting image list from store")
 	}
-	for _, image := range images {
-		layer, err := s.executor.store.Layer(image.TopLayer)
+	var baseHistory []v1.History
+	if s.builder.FromImageID != "" {
+		baseHistory, err = s.executor.getImageHistory(ctx, s.builder.FromImageID)
 		if err != nil {
-			return "", errors.Wrapf(err, "error getting top layer info")
+			return "", errors.Wrapf(err, "error getting history of base image %q", s.builder.FromImageID)
 		}
-		// If the parent of the top layer of an image is equal to the last entry in b.topLayers
+	}
+	for _, image := range images {
+		var imageTopLayer *storage.Layer
+		if image.TopLayer != "" {
+			imageTopLayer, err = s.executor.store.Layer(image.TopLayer)
+			if err != nil {
+				return "", errors.Wrapf(err, "error getting top layer info")
+			}
+		}
+		// If the parent of the top layer of an image is equal to the current build image's top layer,
 		// it means that this image is potentially a cached intermediate image from a previous
 		// build. Next we double check that the history of this image is equivalent to the previous
 		// lines in the Dockerfile up till the point we are at in the build.
-		if layer.Parent == s.executor.topLayers[len(s.executor.topLayers)-1] || layer.ID == s.executor.topLayers[len(s.executor.topLayers)-1] {
+		if imageTopLayer == nil || (s.builder.TopLayer != "" && (imageTopLayer.Parent == s.builder.TopLayer || imageTopLayer.ID == s.builder.TopLayer)) {
 			history, err := s.executor.getImageHistory(ctx, image.ID)
 			if err != nil {
 				return "", errors.Wrapf(err, "error getting history of %q", image.ID)
 			}
 			// children + currNode is the point of the Dockerfile we are currently at.
-			if s.executor.historyMatches(append(children, currNode), history) {
+			if s.executor.historyMatches(baseHistory, currNode, history) {
 				// This checks if the files copied during build have been changed if the node is
 				// a COPY or ADD command.
 				filesMatch, err := s.copiedFilesMatch(currNode, history[len(history)-1].Created)
@@ -1282,32 +1331,42 @@ func (b *Executor) getCreatedBy(node *parser.Node) string {
 	return "/bin/sh -c #(nop) " + node.Original
 }
 
-// historyMatches returns true if the history of the image matches the lines
-// in the Dockerfile till the point of build we are at.
+// historyMatches returns true if a candidate history matches the history of our
+// base image (if we have one), plus the current instruction.
 // Used to verify whether a cache of the intermediate image exists and whether
 // to run the build again.
-func (b *Executor) historyMatches(children []*parser.Node, history []v1.History) bool {
-	i := len(history) - 1
-	for j := len(children) - 1; j >= 0; j-- {
-		instruction := children[j].Original
-		if children[j].Value == "run" {
-			instruction = instruction[4:]
-			buildArgs := b.getBuildArgs()
-			// If a previous image was built with some build-args but the new build process doesn't have any build-args
-			// specified, so compare the lengths of the old instruction with the current one
-			// 11 is the length of "/bin/sh -c " that is used to run the run commands
-			if buildArgs == "" && len(history[i].CreatedBy) > len(instruction)+11 {
-				return false
-			}
-			// There are build-args, so check if anything with the build-args has changed
-			if buildArgs != "" && !strings.Contains(history[i].CreatedBy, buildArgs) {
-				return false
-			}
-		}
-		if !strings.Contains(history[i].CreatedBy, instruction) {
+func (b *Executor) historyMatches(baseHistory []v1.History, child *parser.Node, history []v1.History) bool {
+	if len(baseHistory) >= len(history) {
+		return false
+	}
+	if len(history)-len(baseHistory) != 1 {
+		return false
+	}
+	for i := range baseHistory {
+		if baseHistory[i].CreatedBy != history[i].CreatedBy {
 			return false
 		}
-		i--
+		if baseHistory[i].Comment != history[i].Comment {
+			return false
+		}
+		if baseHistory[i].Author != history[i].Author {
+			return false
+		}
+		if baseHistory[i].EmptyLayer != history[i].EmptyLayer {
+			return false
+		}
+		if baseHistory[i].Created != nil && history[i].Created == nil {
+			return false
+		}
+		if baseHistory[i].Created == nil && history[i].Created != nil {
+			return false
+		}
+		if baseHistory[i].Created != nil && history[i].Created != nil && *baseHistory[i].Created != *history[i].Created {
+			return false
+		}
+	}
+	if history[len(baseHistory)].CreatedBy != b.getCreatedBy(child) {
+		return false
 	}
 	return true
 }
@@ -1321,6 +1380,7 @@ func (b *Executor) getBuildArgs() string {
 			buildArgs = append(buildArgs, k+"="+v)
 		}
 	}
+	sort.Strings(buildArgs)
 	return strings.Join(buildArgs, " ")
 }
 
@@ -1493,7 +1553,6 @@ func (s *StageExecutor) commit(ctx context.Context, ib *imagebuilder.Builder, cr
 	options := buildah.CommitOptions{
 		Compression:           s.executor.compression,
 		SignaturePolicyPath:   s.executor.signaturePolicyPath,
-		AdditionalTags:        s.executor.additionalTags,
 		ReportWriter:          writer,
 		PreferredManifestType: s.executor.outputFormat,
 		SystemContext:         s.executor.systemContext,
@@ -1679,6 +1738,24 @@ func (b *Executor) Build(ctx context.Context, stages imagebuilder.Stages) (image
 		fmt.Fprintf(b.out, "[Warning] one or more build args were not consumed: %v\n", unusedList)
 	}
 
+	if len(b.additionalTags) > 0 {
+		if dest, err := b.resolveNameToImageRef(b.output); err == nil {
+			switch dest.Transport().Name() {
+			case is.Transport.Name():
+				img, err := is.Transport.GetStoreImage(b.store, dest)
+				if err != nil {
+					return imageID, ref, errors.Wrapf(err, "error locating just-written image %q", transports.ImageName(dest))
+				}
+				if err = util.AddImageNames(b.store, "", b.systemContext, img, b.additionalTags); err != nil {
+					return imageID, ref, errors.Wrapf(err, "error setting image names to %v", append(img.Names, b.additionalTags...))
+				}
+				logrus.Debugf("assigned names %v to image %q", img.Names, img.ID)
+			default:
+				logrus.Warnf("don't know how to add tags to images stored in %q transport", dest.Transport().Name())
+			}
+		}
+	}
+
 	if err := cleanup(); err != nil {
 		return "", nil, err
 	}
@@ -1816,8 +1893,8 @@ func (b *Executor) deleteSuccessfulIntermediateCtrs() error {
 }
 
 func (s *StageExecutor) EnsureContainerPath(path string) error {
-	targetPath := filepath.Join(s.mountPoint, path)
-	_, err := os.Lstat(targetPath)
+	targetPath, err := securejoin.SecureJoin(s.mountPoint, path)
+	_, err = os.Lstat(targetPath)
 	if err != nil && os.IsNotExist(err) {
 		err = os.MkdirAll(targetPath, 0755)
 	}

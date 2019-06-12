@@ -26,7 +26,19 @@ load helpers
 
   run_buildah run myctr ls -l sub1.txt
 
+  run_buildah 1 run myctr ls -l sub2.txt
+
   run_buildah run myctr ls -l subdir/sub1.txt
+
+  run_buildah 1 run myctr ls -l subdir/sub2.txt
+
+  run_buildah bud -t testbud2 --signature-policy ${TESTSDIR}/policy.json ${TESTSDIR}/bud/dockerignore2
+
+  run_buildah bud -t testbud3 --signature-policy ${TESTSDIR}/policy.json ${TESTSDIR}/bud/dockerignore3
+
+  run sed -e '/^CUT HERE/,/^CUT HERE/p' -e 'd' <<< "$output"
+  run sed '/CUT HERE/d' <<< "$output"
+  expect_output "$(cat ${TESTSDIR}/bud/dockerignore3/manifest)"
 
   buildah rmi -a -f
 }
@@ -147,6 +159,14 @@ load helpers
   buildah rmi -a -f
 }
 
+@test "bud-multistage-copy-final-slash" {
+  target=foo
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${target} ${TESTSDIR}/bud/dest-final-slash
+  run_buildah --debug=false from --signature-policy ${TESTSDIR}/policy.json ${target}
+  cid="$output"
+  run_buildah run ${cid} /test/ls -lR /test/ls
+}
+
 @test "bud-multistage-reused" {
   target=foo
   run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${target} -f ${TESTSDIR}/bud/multi-stage-builds/Dockerfile.reused ${TESTSDIR}/bud/multi-stage-builds
@@ -154,6 +174,19 @@ load helpers
   run_buildah rmi -f ${target}
   run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${target} --layers -f ${TESTSDIR}/bud/multi-stage-builds/Dockerfile.reused ${TESTSDIR}/bud/multi-stage-builds
   run_buildah from --signature-policy ${TESTSDIR}/policy.json ${target}
+}
+
+@test "bud-multistage-cache" {
+  target=foo
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${target} -f ${TESTSDIR}/bud/multi-stage-builds/Dockerfile.extended ${TESTSDIR}/bud/multi-stage-builds
+  run_buildah --debug=false from --signature-policy ${TESTSDIR}/policy.json ${target}
+  cid="$output"
+  run_buildah --debug=false mount "$cid"
+  root="$output"
+  # cache should have used this one
+  test -r "$root"/tmp/preCommit
+  # cache should not have used this one
+  ! test -r "$root"/tmp/postCommit
 }
 
 @test "bud with --layers and symlink file" {
@@ -190,7 +223,7 @@ load helpers
   expect_line_count 4
 
   cid=$(buildah from --signature-policy ${TESTSDIR}/policy.json test)
-	run_buildah --debug=false run $cid ls /tmp
+  run_buildah --debug=false run $cid ls /tmp
   expect_output "policy.json"
 
   buildah rm -a
@@ -302,6 +335,16 @@ load helpers
   run_buildah --debug=false inspect --format '{{printf "%q" .ImageAnnotations}}' ${target}
   expect_output 'map["test":"annotation1,annotation2=z"]'
   buildah rmi ${target}
+}
+
+@test "bud-from-scratch-layers" {
+  target=scratch-image
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -f  ${TESTSDIR}/bud/from-scratch/Dockerfile2 -t ${target} ${TESTSDIR}/bud/from-scratch
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -f  ${TESTSDIR}/bud/from-scratch/Dockerfile2 -t ${target} ${TESTSDIR}/bud/from-scratch
+  cid=$(buildah from ${target})
+  run_buildah --debug=false images
+  run_buildah rm ${cid}
+  expect_line_count 2
 }
 
 @test "bud-from-multiple-files-one-from" {
@@ -565,6 +608,29 @@ load helpers
   expect_output ""
 }
 
+@test "bud-additional-tags-cached" {
+  target=tagged-image
+  target2=another-tagged-image
+  target3=yet-another-tagged-image
+  target4=still-another-tagged-image
+  run_buildah bud --layers --signature-policy ${TESTSDIR}/policy.json -t ${target} ${TESTSDIR}/bud/addtl-tags
+  run_buildah bud --layers --signature-policy ${TESTSDIR}/policy.json -t ${target2} -t ${target3} -t ${target4} ${TESTSDIR}/bud/addtl-tags
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' busybox
+  busyboxid="$output"
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' ${target}
+  targetid="$output"
+  [ "$targetid" != "$busyboxid" ]
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' ${target2}
+  targetid2="$output"
+  [ "$targetid2" = "$targetid" ]
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' ${target3}
+  targetid3="$output"
+  [ "$targetid3" = "$targetid2" ]
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' ${target4}
+  targetid4="$output"
+  [ "$targetid4" = "$targetid3" ]
+}
+
 @test "bud-volume-perms" {
   # This Dockerfile needs us to be able to handle a working RUN instruction.
   if ! which runc ; then
@@ -630,6 +696,42 @@ load helpers
   run_buildah --debug=false inspect --type=container --format '{{printf "%q" .Docker.Config.Shell}}' ${ctr}
   expect_output '["/bin/bash" "-c"]' ".Docker.Config.Shell (changed)"
   buildah rm ${ctr}
+  buildah rmi -a
+  run_buildah --debug=false images -q
+  expect_output ""
+}
+
+@test "bud-shell during build in Docker format" {
+  target=alpine-image
+  run_buildah bud --format docker --signature-policy ${TESTSDIR}/policy.json -t ${target} -f ${TESTSDIR}/bud/shell/Dockerfile.build-shell-default ${TESTSDIR}/bud/shell
+  expect_output --substring "SHELL=/bin/sh"
+  buildah rmi -a
+  run_buildah --debug=false images -q
+  expect_output ""
+}
+
+@test "bud-shell during build in OCI format" {
+  target=alpine-image
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${target} -f ${TESTSDIR}/bud/shell/Dockerfile.build-shell-default ${TESTSDIR}/bud/shell
+  expect_output --substring "SHELL=/bin/sh"
+  buildah rmi -a
+  run_buildah --debug=false images -q
+  expect_output ""
+}
+
+@test "bud-shell changed during build in Docker format" {
+  target=ubuntu-image
+  run_buildah bud --format docker --signature-policy ${TESTSDIR}/policy.json -t ${target} -f ${TESTSDIR}/bud/shell/Dockerfile.build-shell-custom ${TESTSDIR}/bud/shell
+  expect_output --substring "SHELL=/bin/bash"
+  buildah rmi -a
+  run_buildah --debug=false images -q
+  expect_output ""
+}
+
+@test "bud-shell changed during build in OCI format" {
+  target=ubuntu-image
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${target} -f ${TESTSDIR}/bud/shell/Dockerfile.build-shell-custom ${TESTSDIR}/bud/shell
+  expect_output --substring "SHELL=/bin/sh"
   buildah rmi -a
   run_buildah --debug=false images -q
   expect_output ""
@@ -703,6 +805,35 @@ load helpers
   run_buildah 1 bud --signature-policy ${TESTSDIR}/policy.json -t ${target} -f ${TESTSDIR}/bud/symlink/Dockerfile.symlink-points-to-itself ${TESTSDIR}/bud/symlink
 }
 
+@test "bud multi-stage with symlink to absolute path" {
+  target=ubuntu-image
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${target} -f Dockerfile.absolute-symlink ${TESTSDIR}/bud/symlink
+  cid=$(buildah from --signature-policy ${TESTSDIR}/policy.json ${target})
+  root=$(buildah mount ${cid})
+  run ls $root/bin
+  echo "$output"
+  [ "$status" -eq 0 ]
+  [[ "$output" =~ myexe ]]
+  run cat $root/bin/myexe
+  [ "$status" -eq 0 ]
+  [[ "$output" == "symlink-test" ]]
+  buildah rm ${cid}
+  buildah rmi ${target}
+}
+
+@test "bud multi-stage with dir symlink to absolute path" {
+  target=ubuntu-image
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${target} -f Dockerfile.absolute-dir-symlink ${TESTSDIR}/bud/symlink
+  cid=$(buildah from --signature-policy ${TESTSDIR}/policy.json ${target})
+  root=$(buildah mount ${cid})
+  run ls $root/data
+  echo "$output"
+  [ "$status" -eq 0 ]
+  [[ "$output" =~ myexe ]]
+  buildah rm ${cid}
+  buildah rmi ${target}
+}
+
 @test "bud with ENTRYPOINT and RUN" {
   target=alpine-image
   run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${target} -f Dockerfile.entrypoint-run ${TESTSDIR}/bud/run-scenarios
@@ -768,6 +899,16 @@ load helpers
   from_cid=$(buildah from ${from_target})
   cid=$(buildah from ${target})
   buildah rm ${from_cid} ${cid}
+  buildah rmi -a -f
+}
+
+@test "bud ENV preserves special characters after commit" {
+  from_target=special-chars
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${from_target} -f ${TESTSDIR}/bud/env/Dockerfile.special-chars ${TESTSDIR}/bud/env
+  cid=$(buildah from ${from_target})
+  run_buildah run ${cid} env
+  expect_output --substring "LIB=\\$\(PREFIX\)/lib"
+  buildah rm ${cid}
   buildah rmi -a -f
 }
 
@@ -994,6 +1135,76 @@ load helpers
   expect_output --substring "/var/file2"
 }
 
+@test "bud with COPY of single file creates absolute path with correct permissions" {
+  imgName=ubuntu-image
+  ctrName=ubuntu-copy
+  run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json -t ${imgName} ${TESTSDIR}/bud/copy-create-absolute-path
+  expect_output --substring "permissions=755"
+
+  run_buildah --debug=false from --name ${ctrName} ${imgName}
+  run_buildah --debug=false run ${ctrName} -- stat -c "%a" /usr/lib/python3.7/distutils
+  expect_output --substring "755"
+}
+
+@test "bud with COPY of single file creates relative path with correct permissions" {
+  imgName=ubuntu-image
+  ctrName=ubuntu-copy
+  run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json -t ${imgName} ${TESTSDIR}/bud/copy-create-relative-path
+  expect_output --substring "permissions=755"
+
+  run_buildah --debug=false from --name ${ctrName} ${imgName}
+  run_buildah --debug=false run ${ctrName} -- stat -c "%a" lib/custom
+  expect_output --substring "755"
+}
+
+@test "bud with ADD of single file creates absolute path with correct permissions" {
+  imgName=ubuntu-image
+  ctrName=ubuntu-copy
+  run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json -t ${imgName} ${TESTSDIR}/bud/add-create-absolute-path
+  expect_output --substring "permissions=755"
+
+  run_buildah --debug=false from --name ${ctrName} ${imgName}
+  run_buildah --debug=false run ${ctrName} -- stat -c "%a" /usr/lib/python3.7/distutils
+  expect_output --substring "755"
+}
+
+@test "bud with ADD of single file creates relative path with correct permissions" {
+  imgName=ubuntu-image
+  ctrName=ubuntu-copy
+  run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json -t ${imgName} ${TESTSDIR}/bud/add-create-relative-path
+  expect_output --substring "permissions=755"
+
+  run_buildah --debug=false from --name ${ctrName} ${imgName}
+  run_buildah --debug=false run ${ctrName} -- stat -c "%a" lib/custom
+  expect_output --substring "755"
+}
+
+@test "bud multi-stage COPY creates absolute path with correct permissions" {
+  imgName=ubuntu-image
+  ctrName=ubuntu-copy
+  run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json -f ${TESTSDIR}/bud/copy-multistage-paths/Dockerfile.absolute -t ${imgName} ${TESTSDIR}/bud/copy-multistage-paths
+  expect_output --substring "permissions=755"
+
+  run_buildah --debug=false from --name ${ctrName} ${imgName}
+  run_buildah --debug=false run ${ctrName} -- stat -c "%a" /my/bin
+  expect_output --substring "755"
+}
+
+@test "bud multi-stage COPY creates relative path with correct permissions" {
+  imgName=ubuntu-image
+  ctrName=ubuntu-copy
+  run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json -f ${TESTSDIR}/bud/copy-multistage-paths/Dockerfile.relative -t ${imgName} ${TESTSDIR}/bud/copy-multistage-paths
+  expect_output --substring "permissions=755"
+
+  run_buildah --debug=false from --name ${ctrName} ${imgName}
+  run_buildah --debug=false run ${ctrName} -- stat -c "%a" my/bin
+  expect_output --substring "755"
+}
+
+@test "bud COPY to root succeeds" {
+  run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json ${TESTSDIR}/bud/copy-root
+}
+
 @test "bud with FROM AS construct" {
   buildah bud --signature-policy ${TESTSDIR}/policy.json -t test1 ${TESTSDIR}/bud/from-as
   run_buildah --debug=false images -a
@@ -1174,6 +1385,22 @@ load helpers
   expect_output --substring "Dockerfile"
 }
 
+@test "bud copy to dangling symlink" {
+  target=ubuntu-image
+  ctr=ubuntu-ctr
+  run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json -t ${target} ${TESTSDIR}/bud/dest-symlink-dangling
+  expect_output --substring "STEP 3: RUN ln -s "
+
+  run_buildah --debug=false from --signature-policy ${TESTSDIR}/policy.json --name=${ctr} ${target}
+  expect_output --substring ${ctr}
+
+  run_buildah --debug=false run ${ctr} ls -alF /src
+  expect_output --substring "/src -> /symlink"
+
+  run_buildah --debug=false run ${ctr} ls -alF /symlink
+  expect_output --substring "Dockerfile"
+}
+
 @test "bud WORKDIR isa symlink" {
   target=alpine-image
   ctr=alpine-ctr
@@ -1186,7 +1413,48 @@ load helpers
   run_buildah --debug=false run ${ctr} ls -alF /tempest
   expect_output --substring "/tempest -> /var/lib/tempest/"
 
-  run_buildah --debug=false run ${ctr} ls -alF /etc/notareal.conf 
+  run_buildah --debug=false run ${ctr} ls -alF /etc/notareal.conf
+  expect_output --substring "\-rw\-rw\-r\-\-"
+}
+
+@test "bud WORKDIR isa symlink no target dir" {
+  target=alpine-image
+  ctr=alpine-ctr
+  run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json -t ${target} -f Dockerfile-2 ${TESTSDIR}/bud/workdir-symlink
+  expect_output --substring "STEP 2: RUN ln -sf "
+
+  run_buildah --debug=false from --signature-policy ${TESTSDIR}/policy.json --name=${ctr} ${target}
+  expect_output --substring ${ctr}
+
+  run_buildah --debug=false run ${ctr} ls -alF /tempest
+  expect_output --substring "/tempest -> /var/lib/tempest/"
+
+  run_buildah --debug=false run ${ctr} ls /tempest
+  expect_output --substring "Dockerfile-2"
+
+  run_buildah --debug=false run ${ctr} ls -alF /etc/notareal.conf
+  expect_output --substring "\-rw\-rw\-r\-\-"
+}
+
+@test "bud WORKDIR isa symlink no target dir and follow on dir" {
+  target=alpine-image
+  ctr=alpine-ctr
+  run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json -t ${target} -f Dockerfile-3 ${TESTSDIR}/bud/workdir-symlink
+  expect_output --substring "STEP 2: RUN ln -sf "
+
+  run_buildah --debug=false from --signature-policy ${TESTSDIR}/policy.json --name=${ctr} ${target}
+  expect_output --substring ${ctr}
+
+  run_buildah --debug=false run ${ctr} ls -alF /tempest
+  expect_output --substring "/tempest -> /var/lib/tempest/"
+
+  run_buildah --debug=false run ${ctr} ls /tempest
+  expect_output --substring "Dockerfile-3"
+
+  run_buildah --debug=false run ${ctr} ls /tempest/lowerdir
+  expect_output --substring "Dockerfile-3"
+
+  run_buildah --debug=false run ${ctr} ls -alF /etc/notareal.conf
   expect_output --substring "\-rw\-rw\-r\-\-"
 }
 
@@ -1194,6 +1462,7 @@ load helpers
   run_buildah --debug=false bud --signature-policy ${TESTSDIR}/policy.json -v ${TESTSDIR}:/testdir ${TESTSDIR}/bud/mount
   expect_output --substring "/testdir"
 }
+
 @test "bud-copy-dot with --layers picks up changed file" {
   cp -a ${TESTSDIR}/bud/use-layers ${TESTDIR}/use-layers
 
@@ -1210,4 +1479,87 @@ load helpers
   fi
 
   buildah rmi -a -f
+}
+
+@test "buildah-bud-policy" {
+  target=foo
+
+  # A deny-all policy should prevent us from pulling the base image.
+  run_buildah '?' bud --signature-policy ${TESTSDIR}/deny.json -t ${target} -v ${TESTSDIR}:/testdir ${TESTSDIR}/bud/mount
+  [ "$status" -ne 0 ]
+  expect_output --substring 'Source image rejected: Running image .* rejected by policy.'
+  run_buildah rmi -a -f
+
+  # A docker-only policy should allow us to pull the base image and commit.
+  run_buildah bud --signature-policy ${TESTSDIR}/docker.json -t ${target} -v ${TESTSDIR}:/testdir ${TESTSDIR}/bud/mount
+  # A deny-all policy shouldn't break pushing.
+  run_buildah push --signature-policy ${TESTSDIR}/deny.json ${target} dir:${TESTDIR}/mount
+  run_buildah rmi -a -f
+
+  # A docker-only policy should allow us to pull the base image first...
+  run_buildah pull --signature-policy ${TESTSDIR}/docker.json alpine
+  # ... and since we don't need to pull the base image, a deny-all policy shouldn't break a build.
+  run_buildah bud --signature-policy ${TESTSDIR}/deny.json -t ${target} -v ${TESTSDIR}:/testdir ${TESTSDIR}/bud/mount
+  # A deny-all policy shouldn't break pushing.
+  run_buildah push --signature-policy ${TESTSDIR}/deny.json ${target} dir:${TESTDIR}/mount
+  # A deny-all policy shouldn't break committing directly to other storage.
+  run_buildah bud --signature-policy ${TESTSDIR}/deny.json -t dir:${TESTDIR}/mount -v ${TESTSDIR}:/testdir ${TESTSDIR}/bud/mount
+  run_buildah rmi -a -f
+}
+
+@test "bud-copy-replace-symlink" {
+  mkdir -p ${TESTDIR}/top
+  cp ${TESTSDIR}/bud/symlink/Dockerfile.replace-symlink ${TESTDIR}/top/
+  ln -s Dockerfile.replace-symlink ${TESTDIR}/top/symlink
+  echo foo > ${TESTDIR}/top/.dockerignore
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -f ${TESTDIR}/top/Dockerfile.replace-symlink ${TESTDIR}/top
+}
+
+@test "bud-copy-recurse" {
+  mkdir -p ${TESTDIR}/recurse
+  cp ${TESTSDIR}/bud/recurse/Dockerfile ${TESTDIR}/recurse
+  echo foo > ${TESTDIR}/recurse/.dockerignore
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json ${TESTDIR}/recurse
+}
+
+@test "bud-copy-workdir" {
+  target=testimage
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json -t ${target} ${TESTSDIR}/bud/copy-workdir
+  run_buildah --debug=false from ${target}
+  cid="$output"
+  run_buildah --debug=false mount "${cid}"
+  root="$output"
+  test -s "${root}"/file1.txt
+  test -d "${root}"/subdir
+  test -s "${root}"/subdir/file2.txt
+}
+
+@test "bud-build-arg-cache" {
+  target=derived-image
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json --layers -t ${target} -f Dockerfile3 ${TESTSDIR}/bud/build-arg
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' ${target}
+  targetid="$output"
+
+  # With build args, we should not find the previous build as a cached result.
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json --layers -t ${target} -f Dockerfile3 --build-arg=UID=17122 --build-arg=CODE=/copr/coprs_frontend --build-arg=USERNAME=praiskup --build-arg=PGDATA=/pgdata ${TESTSDIR}/bud/build-arg
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' ${target}
+  argsid="$output"
+  [[ "$argsid" != "$targetid" ]]
+
+  # With build args, even in a different order, we should end up using the previous build as a cached result.
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json --layers -t ${target} -f Dockerfile3 --build-arg=UID=17122 --build-arg=CODE=/copr/coprs_frontend --build-arg=USERNAME=praiskup --build-arg=PGDATA=/pgdata ${TESTSDIR}/bud/build-arg
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' ${target}
+  [[ "$output" == "$argsid" ]]
+
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json --layers -t ${target} -f Dockerfile3 --build-arg=CODE=/copr/coprs_frontend --build-arg=USERNAME=praiskup --build-arg=PGDATA=/pgdata --build-arg=UID=17122 ${TESTSDIR}/bud/build-arg
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' ${target}
+  [[ "$output" == "$argsid" ]]
+
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json --layers -t ${target} -f Dockerfile3 --build-arg=USERNAME=praiskup --build-arg=PGDATA=/pgdata --build-arg=UID=17122 --build-arg=CODE=/copr/coprs_frontend ${TESTSDIR}/bud/build-arg
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' ${target}
+  [[ "$output" == "$argsid" ]]
+
+  run_buildah bud --signature-policy ${TESTSDIR}/policy.json --layers -t ${target} -f Dockerfile3 --build-arg=PGDATA=/pgdata --build-arg=UID=17122 --build-arg=CODE=/copr/coprs_frontend --build-arg=USERNAME=praiskup ${TESTSDIR}/bud/build-arg
+  run_buildah --debug=false inspect -f '{{.FromImageID}}' ${target}
+  [[ "$output" == "$argsid" ]]
 }

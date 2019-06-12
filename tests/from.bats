@@ -244,7 +244,7 @@ load helpers
   fi
   cid=$(buildah from --cpu-shares=2 --pull --signature-policy ${TESTSDIR}/policy.json alpine)
   run_buildah --debug=false run $cid cat /sys/fs/cgroup/cpu/cpu.shares
-  expect_output "1024"
+  expect_output "2"
   buildah rm $cid
 }
 
@@ -311,14 +311,14 @@ load helpers
 }
 
 @test "from shm-size test" {
-  if test "$BUILDAH_ISOLATION" = "chroot" -o "$BUILDAH_ISOLATION" = "rootless" ; then
+  if test "$BUILDAH_ISOLATION" = "chroot"; then
     skip "BUILDAH_ISOLATION = $BUILDAH_ISOLATION"
   fi
   if ! which runc ; then
     skip "no runc in PATH"
   fi
   cid=$(buildah from --shm-size=80m --pull --signature-policy ${TESTSDIR}/policy.json alpine)
-  run_buildah --debug=false run $cid -- df -h
+  run_buildah --debug=false run $cid -- df -h /dev/shm
   expect_output --substring " 80.0M "
   buildah rm $cid
 }
