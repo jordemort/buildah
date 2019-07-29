@@ -21,7 +21,7 @@ import (
 	"github.com/containers/storage/pkg/archive"
 	digest "github.com/opencontainers/go-digest"
 	"github.com/opencontainers/image-spec/specs-go"
-	"github.com/opencontainers/image-spec/specs-go/v1"
+	v1 "github.com/opencontainers/image-spec/specs-go/v1"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
@@ -72,6 +72,9 @@ func TestBlobCache(t *testing.T) {
 			for _, layerCompression := range []archive.Compression{archive.Uncompressed, archive.Gzip} {
 				// Create a layer with the specified layerCompression.
 				blobBytes, diffID, err := makeLayer(fmt.Sprintf("layer-content-%d", int(layerCompression)), repeat, layerCompression)
+				if err != nil {
+					t.Fatalf("error making layer: %v", err)
+				}
 				blobInfo := types.BlobInfo{
 					Digest: digest.FromBytes(blobBytes),
 					Size:   int64(len(blobBytes)),

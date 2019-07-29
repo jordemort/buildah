@@ -21,9 +21,8 @@ import (
 	"golang.org/x/sys/unix"
 )
 
-func getVersion(r *types.TestReport) error {
+func getVersion(r *types.TestReport) {
 	r.Spec.Version = fmt.Sprintf("%d.%d.%d%s", specs.VersionMajor, specs.VersionMinor, specs.VersionPatch, specs.VersionDev)
-	return nil
 }
 
 func getHostname(r *types.TestReport) error {
@@ -308,7 +307,7 @@ func getLinuxSysctl(r *types.TestReport) error {
 	if r.Spec.Linux.Sysctl == nil {
 		r.Spec.Linux.Sysctl = make(map[string]string)
 	}
-	walk := func(path string, info os.FileInfo, err error) error {
+	walk := func(path string, info os.FileInfo, _ error) error {
 		if info.IsDir() {
 			return nil
 		}
@@ -324,9 +323,7 @@ func getLinuxSysctl(r *types.TestReport) error {
 			}
 			return errors.Wrapf(err, "error reading sysctl %q", path)
 		}
-		if strings.HasPrefix(path, "/proc/sys/") {
-			path = path[10:]
-		}
+		path = strings.TrimPrefix(path, "/proc/sys/")
 		sysctl := strings.Replace(path, "/", ".", -1)
 		val := strings.TrimRight(string(value), "\r\n")
 		if strings.ContainsAny(val, "\r\n") {
@@ -426,10 +423,7 @@ func main() {
 	if r.Spec == nil {
 		r.Spec = new(specs.Spec)
 	}
-	if err := getVersion(&r); err != nil {
-		logrus.Errorf("%v", err)
-		os.Exit(1)
-	}
+	getVersion(&r)
 	if err := getProcess(&r); err != nil {
 		logrus.Errorf("%v", err)
 		os.Exit(1)
@@ -447,5 +441,8 @@ func main() {
 		os.Exit(1)
 	}
 
-	json.NewEncoder(os.Stdout).Encode(r)
+	if err := json.NewEncoder(os.Stdout).Encode(r); err != nil {
+		logrus.Errorf("%v", err)
+		os.Exit(1)
+	}
 }

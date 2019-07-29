@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"github.com/spf13/cobra"
 	"os"
 	"os/user"
 	"testing"
@@ -12,6 +11,7 @@ import (
 	"github.com/containers/image/types"
 	"github.com/containers/storage"
 	"github.com/sirupsen/logrus"
+	"github.com/spf13/cobra"
 )
 
 var (
@@ -58,7 +58,9 @@ func TestGetStore(t *testing.T) {
 	flags.String("runroot", storeOptions.RunRoot, "")
 	flags.String("storage-driver", storeOptions.GraphDriverName, "")
 	flags.String("signature-policy", "", "")
-	flags.MarkHidden("signature-policy")
+	if err := flags.MarkHidden("signature-policy"); err != nil {
+		t.Error(err)
+	}
 	// The following flags had to be added or we get panics in common.go when
 	// the lookups occur
 	flags.StringSlice("storage-opt", []string{}, "")
@@ -83,10 +85,7 @@ func TestGetSize(t *testing.T) {
 	}
 
 	// Pull an image so that we know we have at least one
-	_, err = pullTestImage(t, "busybox:latest")
-	if err != nil {
-		t.Fatalf("could not pull image to remove: %v", err)
-	}
+	pullTestImage(t)
 
 	images, err := store.Images()
 	if err != nil {
@@ -108,7 +107,7 @@ func failTestIfNotRoot(t *testing.T) {
 	}
 }
 
-func pullTestImage(t *testing.T, imageName string) (string, error) {
+func pullTestImage(t *testing.T) string {
 	store, err := storage.GetStore(storeOptions)
 	if err != nil {
 		t.Fatal(err)
@@ -117,7 +116,7 @@ func pullTestImage(t *testing.T, imageName string) (string, error) {
 		LabelOpts: nil,
 	}
 	options := buildah.BuilderOptions{
-		FromImage:           imageName,
+		FromImage:           "busybox:latest",
 		SignaturePolicyPath: signaturePolicyPath,
 		CommonBuildOpts:     commonOpts,
 		SystemContext:       &testSystemContext,
@@ -132,5 +131,5 @@ func pullTestImage(t *testing.T, imageName string) (string, error) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	return id, nil
+	return id
 }
