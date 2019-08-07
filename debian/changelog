@@ -1,0 +1,692 @@
+buildah (1.10.0-1+stretch1) stretch; urgency=medium
+
+  * Build for stretch
+
+ -- Jordan Webb <jordemort@github.com>  Wed, 07 Aug 2019 23:59:00 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 22:22:23 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 21:23:09 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 20:23:38 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 19:23:50 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 18:23:30 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 17:23:07 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 16:27:14 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 15:36:31 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 14:45:35 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 13:40:50 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 12:32:38 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 11:29:27 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 10:29:44 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 09:35:09 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 08:33:23 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 07:27:10 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 06:32:19 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 05:29:36 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 04:42:59 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 03:25:01 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 02:27:35 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 01:23:27 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 07 Aug 2019 00:29:36 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 23:27:58 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 22:22:32 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 21:24:08 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 20:09:19 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 18:26:15 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 17:32:20 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 16:31:16 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 15:53:34 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 15:04:09 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 13:51:29 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 12:39:24 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 11:27:43 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 10:36:29 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 09:38:13 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 08:40:11 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 07:24:39 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 06:28:39 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 05:22:40 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 04:42:39 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 03:26:07 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 02:27:13 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 01:27:28 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 06 Aug 2019 00:23:13 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 23:23:41 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 22:23:38 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 21:26:42 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 20:29:39 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 19:24:36 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 18:26:29 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 17:29:37 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 16:30:07 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 15:46:19 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 14:52:04 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 13:42:54 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 13:41:14 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 13:01:07 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 12:33:35 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 11:28:56 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 10:31:29 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 09:32:27 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 08:34:20 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 07:24:20 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 06:25:19 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 05:27:47 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 04:44:37 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 05 Aug 2019 02:57:58 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 04 Aug 2019 18:52:57 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to v1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 03 Aug 2019 20:03:19 +0000
+
+buildah (1.10.0-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to 1.10.0
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 02 Aug 2019 17:23:30 +0000
+
+buildah (1.9.2-1~ubuntu19.04~ppa3) disco; urgency=medium
+
+  * rebuild - bump release tag
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Sun, 28 Jul 2019 21:48:17 +0000
+
+buildah (1.9.2-1~ubuntu19.04~ppa2) disco; urgency=medium
+
+  * build dep on libbtrfs-dev
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Sun, 28 Jul 2019 15:05:32 +0000
+
+buildah (1.9.2-1~ubuntu19.04~ppa1) disco; urgency=medium
+
+  * bump to 1.9.2
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 28 Jul 2019 02:54:06 +0000
+
+buildah (1.9.0-1~dev~ubuntu18.04~ppa1) bionic; urgency=medium
+
+  * autobuilt e9184ea
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Fri, 10 May 2019 15:10:50 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa25) bionic; urgency=medium
+
+  * autobuilt 391a5be
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 17 Apr 2019 23:12:30 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa24) bionic; urgency=medium
+
+  * autobuilt ffd8d6a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 16 Apr 2019 23:11:45 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa23) bionic; urgency=medium
+
+  * autobuilt ffd8d6a
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Tue, 16 Apr 2019 19:58:00 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa22) bionic; urgency=medium
+
+  * autobuilt d43787b
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 12 Apr 2019 23:10:15 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa21) bionic; urgency=medium
+
+  * autobuilt d84dc64
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 11 Apr 2019 23:09:56 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa20) bionic; urgency=medium
+
+  * autobuilt 021d607
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 09 Apr 2019 23:08:00 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa19) bionic; urgency=medium
+
+  * autobuilt 610eb7a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 08 Apr 2019 23:08:23 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa18) bionic; urgency=medium
+
+  * autobuilt 29f306c
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 08 Apr 2019 19:09:59 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa17) bionic; urgency=medium
+
+  * autobuilt 29f306c
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 08 Apr 2019 18:53:17 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa16) bionic; urgency=medium
+
+  * autobuilt 29f306c
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 08 Apr 2019 18:37:52 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa15) bionic; urgency=medium
+
+  * autobuilt a6ee26b
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 05 Apr 2019 23:07:00 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa14) bionic; urgency=medium
+
+  * autobuilt 8dd8e1a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 04 Apr 2019 23:06:48 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa13) bionic; urgency=medium
+
+  * autobuilt 9e1967a
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 31 Mar 2019 23:03:38 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa12) bionic; urgency=medium
+
+  * autobuilt 13d9142
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 29 Mar 2019 23:02:42 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa11) bionic; urgency=medium
+
+  * autobuilt a9bd025
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 28 Mar 2019 23:05:42 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa10) bionic; urgency=medium
+
+  * autobuilt c933fe4
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 27 Mar 2019 23:41:09 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa9) bionic; urgency=medium
+
+  * autobuilt 3d74031
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 26 Mar 2019 23:00:20 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa8) bionic; urgency=medium
+
+  * autobuilt 03fae01
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sun, 24 Mar 2019 22:58:56 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa7) bionic; urgency=medium
+
+  * autobuilt d1c75ea
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 23 Mar 2019 22:58:51 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa6) bionic; urgency=medium
+
+  * autobuilt 180ee7d
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 22 Mar 2019 22:59:28 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa5) bionic; urgency=medium
+
+  * autobuilt 24c3174
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 21 Mar 2019 22:59:08 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa4) bionic; urgency=medium
+
+  * autobuilt e6262e3
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 20 Mar 2019 22:59:17 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa3) bionic; urgency=medium
+
+  * autobuilt 1ba9201
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 19 Mar 2019 22:58:37 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa2) bionic; urgency=medium
+
+  * autobuilt d0f8515
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 18 Mar 2019 22:57:49 +0000
+
+buildah (1.8-1~dev~ubuntu18.04~ppa1) bionic; urgency=medium
+
+  * bump to v1.8
+  * autobuilt a986f34
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Sun, 17 Mar 2019 21:41:28 +0000
+
+buildah (1.6-1~dev~ubuntu18.04~ppa4) bionic; urgency=medium
+
+  * autobuilt dd3dff5
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 18 Dec 2018 22:12:27 +0000
+
+buildah (1.6-1~dev~ubuntu18.04~ppa3) bionic; urgency=medium
+
+  * autobuilt 96c68db
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Sat, 15 Dec 2018 22:09:17 +0000
+
+buildah (1.6-1~dev~ubuntu18.04~ppa2) bionic; urgency=medium
+
+  * autobuilt de7f480
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 13 Dec 2018 22:08:20 +0000
+
+buildah (1.6-1~dev~ubuntu18.04~ppa1) bionic; urgency=medium
+
+  * bump to v1.6, autobuilt 90ea890
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Thu, 13 Dec 2018 07:20:17 -0500
+
+buildah (1.5-1~dev~ubuntu18.04~ppa8) bionic; urgency=medium
+
+  * autobuilt e577d58
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 19 Nov 2018 21:56:21 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa7) bionic; urgency=medium
+
+  * autobuilt 18309de
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 16 Nov 2018 21:55:20 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa6) bionic; urgency=medium
+
+  * autobuilt dac7819
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Wed, 14 Nov 2018 21:55:13 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa5) bionic; urgency=medium
+
+  * autobuilt e0d0ad3
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Tue, 13 Nov 2018 21:54:56 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa4) bionic; urgency=medium
+
+  * autobuilt fb2b2bd
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Mon, 12 Nov 2018 21:53:19 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa3) bionic; urgency=medium
+
+  * autobuilt 9add3c8
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Fri, 09 Nov 2018 21:51:54 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa2) bionic; urgency=medium
+
+  * autobuilt 74e0b6f
+
+ -- Lokesh Mandvekar (Bot) <lsm5+bot@fedoraproject.org>  Thu, 08 Nov 2018 22:08:30 +0000
+
+buildah (1.5-1~dev~ubuntu18.04~ppa1) bionic; urgency=medium
+
+  * bump to v1.5
+  * built 74e0b6f
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Thu, 08 Nov 2018 16:39:23 -0500
+
+buildah (1.4-1~dev~ubuntu18.04~ppa5) bionic; urgency=medium
+
+  * built 3bdbcdf
+  * Initial package
+
+ -- Lokesh Mandvekar <lsm5@fedoraproject.org>  Mon, 20 Aug 2018 15:41:12 -0400
